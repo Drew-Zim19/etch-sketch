@@ -1,0 +1,53 @@
+body{
+    display: flex;
+    justify-content: center;
+    background-color: beige;
+    flex-direction: column;
+}
+
+.header{
+    align-self: center;
+}
+
+.head-button{
+    max-width: 80px;
+    align-self: center;
+}
+
+.enterContainer{
+    align-self: center;
+}
+.pixels{
+    max-width: 100px;
+    align-self: center;
+    margin-bottom: 10px;;
+}
+
+#pixelButton{
+
+}
+
+#pixelsForm { 
+    max-width: 60px;
+    align-self: center;
+    margin-bottom: 10px;;
+}
+.grid-container{
+    display: grid;
+    justify-content: center;
+    align-self: center;
+    grid-template-columns: 50px 50 px;
+    width: 600px;
+    height: 600px;
+    border: 3px;
+    border-color: black;
+    border-style: solid;
+    background-color: white;
+    margin: 10px;
+}
+.footer{
+    display: flex;
+    align-self: center;
+    flex-direction: column;
+    font-family: sans-serif;
+}
