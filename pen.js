@@ -11,12 +11,16 @@ Algorithm breakdown
 
 const body = document.body;
 let pixelValue = '';
-
+let divBackgroundColor = 'white';
 //function below grabs input from the form to get number of pixels
 
 document.getElementById("pixelButton").addEventListener("click", () => {
 pixelValue = document.getElementById("pixelsForm").value;
+if(pixelValue > 100 || pixelValue < 10){
+    alert("Number of Pixels must be between 10 and 100.")
+} else{
 changeGridPixels(pixelValue);
+}
 });
 
 //create the grid variable to manipulate for the sketch pad
@@ -36,7 +40,7 @@ function changeGridPixels (pixelValue){
         const div = document.createElement('div');
         div.classList.add('gridSquare');
         div.addEventListener('mouseover', (event) => {
-            event.target.style.backgroundColor = 'black';
+            event.target.style.backgroundColor = penColor(divBackgroundColor);
     });
     grid.appendChild(div);
    }
@@ -52,3 +56,36 @@ document.getElementById('clearButton').addEventListener('click', () => {
         
 });
 
+//toggle button logic for div background color
+
+let isSwitched = false;
+
+document.getElementById('switch').addEventListener('click', () => {
+    if(isSwitched == false){
+        isSwitched = true;
+    } else if(isSwitched == true){
+        isSwitched = false;
+    }
+});
+
+//random RGB color generator
+
+function getRandomRgb() {
+    var num = Math.round(0xffffff * Math.random());
+    var r = num >> 16;
+    var g = num >> 8 & 255;
+    var b = num & 255;
+    return 'rgb(' + r + ', ' + g + ', ' + b + ')';
+  }
+  
+//penColor function to return a color for a given div
+
+function penColor (divBackgroundColor){
+    if(isSwitched == true){
+        divBackgroundColor = getRandomRgb();
+    }
+    else {
+        divBackgroundColor = 'black';
+    }
+    return divBackgroundColor;
+}
